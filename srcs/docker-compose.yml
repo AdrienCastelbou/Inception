@@ -9,8 +9,8 @@ services:
    #    restart: always
    #    container_name: wordpress
 
-    mysql:
-        build: requirements/nginx/.
+    mariadb:
+        build: requirements/mariadb/.
         volumes:
             - /home/user42/data/db/.:/var/lib/mysql
         environment:
@@ -19,7 +19,7 @@ services:
             MYSQL_USER: ${USER_NAME}
             MYSQL_PASSWORD: ${USER_PASS}
         restart: always
-        container_name: mysql
+        container_name: mariadb
 
     nginx:
         build: requirements/nginx/.
