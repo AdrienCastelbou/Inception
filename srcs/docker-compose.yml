@@ -11,6 +11,10 @@ services:
 
     mariadb:
         build: requirements/mariadb/.
+        volumes:
+            - /home/user42/Documents/42/inception/srcs/requirements/mariadb/tools/.:/etc/mysql/conf.d/.
+        expose:
+            - 3306
         restart: always
         env_file:
             - .env
