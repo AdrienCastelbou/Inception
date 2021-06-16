@@ -13,17 +13,17 @@ services:
             - .env
         container_name: wordpress
 
-    mariadb:
-        build: requirements/mariadb/.
-        volumes:
-            - /home/user42/Documents/42/inception/srcs/requirements/mariadb/conf/.:/etc/mysql/conf.d/.
-            - /home/user42/data/db/.:/var/lib/mysql
-        expose:
-            - 3306
-        restart: always
-        env_file:
-            - .env
-        container_name: mariadb
+    # mariadb:
+    #    build: requirements/mariadb/.
+    #    volumes:
+    #        - /home/user42/Documents/42/inception/srcs/requirements/mariadb/conf/.:/etc/mysql/conf.d/.
+    #        - /home/user42/data/db/.:/var/lib/mysql
+    #    expose:
+    #        - 3306
+    #    restart: always
+    #    env_file:
+    #        - .env
+    #    container_name: mariadb
 
     nginx:
         build: requirements/nginx/.

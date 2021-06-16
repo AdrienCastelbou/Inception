@@ -12,4 +12,6 @@ COPY tools/entrypoint.sh entrypoint.sh
 COPY conf/wp-config.php /var/www/html/wordpress
 RUN chown -R www-data:www-data /var/www/html/wordpress
 RUN chmod 755 /entrypoint.sh
-ENTRYPOINT /entrypoint.sh
+RUN mkdir -p /run/php
+#ENTRYPOINT /entrypoint.sh
+CMD ["php-fpm7.3", "-R", "-F"]
