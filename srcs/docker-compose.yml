@@ -2,16 +2,16 @@ version: "3.3"
 
 services:
     
-    #wordpress:
-    #    build: requirements/wordpress/.
-    #    volumes:
-    #        - /home/user42/data/front.:/usr/var/html
-    #    restart: always
-    #    expose:
-    #        - 9000
-    #    env_file:
-    #        - .env
-    #    container_name: wordpress
+    wordpress:
+        build: requirements/wordpress/.
+        # volumes:
+        #    - /home/user42/data/front/.:/var/www/html/
+        restart: always
+        expose:
+            - 9000
+        env_file:
+            - .env
+        container_name: wordpress
 
     mariadb:
         build: requirements/mariadb/.
