@@ -4,8 +4,8 @@ services:
     
     wordpress:
         build: requirements/wordpress/.
-        # volumes:
-        #    - /home/user42/data/front/.:/var/www/html/
+        volumes:
+            - /home/user42/data/front/.:/var/www/html/
         restart: always
         expose:
             - 9000
