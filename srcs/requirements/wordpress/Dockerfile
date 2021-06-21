@@ -8,10 +8,8 @@ RUN apt install wget -y
 RUN wget https://fr.wordpress.org/latest-fr_FR.tar.gz
 RUN tar -zxvf latest-fr_FR.tar.gz -C /var/www/html
 RUN rm -f latest-fr_FR.tar.gz
-COPY tools/entrypoint.sh entrypoint.sh
 COPY conf/wp-config.php /var/www/html/wordpress
 RUN chown -R www-data:www-data /var/www/html/wordpress
-RUN chmod 755 /entrypoint.sh
 RUN sed -i 's/;listen.allowed_clients = 127.0.0.1/listen = 0.0.0.0:9000 /' /etc/php/7.3/fpm/pool.d/www.conf
 RUN mkdir -p /run/php
 CMD ["php-fpm7.3", "-R", "-F"]
