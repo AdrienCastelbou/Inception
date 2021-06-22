@@ -37,7 +37,7 @@ services:
         volumes:
             - /home/user42/data/front/.:/usr/var/www/html
         ports:
-            - 80:80
+            - 443:443
         networks:
             - inception
         container_name: nginx
