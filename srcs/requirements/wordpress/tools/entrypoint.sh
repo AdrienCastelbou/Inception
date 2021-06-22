@@ -1,1 +1,3 @@
-sed -i 's/search_string/replace_string/' /etc/php/7.3/fpm/pool.d/www.conf
+mv wp-config.php /wordpress
+mv wordpress /var/www/html
+php-fpm7.3 -R -F
