@@ -4,6 +4,7 @@ services:
     
     wordpress:
         build: requirements/wordpress/.
+        image: wordpress
         volumes:
             - /home/user42/data/front/.:/var/www/html/
         restart: always
@@ -17,6 +18,7 @@ services:
 
     mariadb:
         build: requirements/mariadb/.
+        image: mariadb
         volumes:
             - /home/user42/Documents/42/inception/srcs/requirements/mariadb/conf/.:/etc/mysql/conf.d/.
             - /home/user42/data/db/.:/var/lib/mysql
@@ -31,6 +33,7 @@ services:
 
     nginx:
         build: requirements/nginx/.
+        image: nginx
         volumes:
             - /home/user42/data/front/.:/usr/var/www/html
         ports:
