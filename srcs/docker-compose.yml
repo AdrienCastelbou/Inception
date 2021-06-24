@@ -20,7 +20,6 @@ services:
         build: requirements/mariadb/.
         image: mariadb
         volumes:
-            - /home/user42/Documents/42/inception/srcs/requirements/mariadb/conf/.:/etc/mysql/conf.d/.
             - /home/user42/data/db/.:/var/lib/mysql
         expose:
             - 3306
