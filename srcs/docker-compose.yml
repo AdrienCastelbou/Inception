@@ -34,6 +34,8 @@ services:
 
     nginx:
         build: requirements/nginx/.
+        depends_on:
+            - wordpress
         image: nginx
         volumes:
             - /home/user42/data/front/.:/usr/var/www/html
