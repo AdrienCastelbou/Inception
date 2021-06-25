@@ -1,10 +1,10 @@
 mysql_install_db
-mysqld &
-mysql -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE"
-mysql -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
-mysql -e "GRANT ALL PRIVILEGES ON * . * TO '$MYSQL_USER'@'%';"
-mysql -e "FLUSH PRIVILEGES;"
-mysql <<EOF
+
+cat << EOF > db.sql
+CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
+CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
+GRANT ALL PRIVILEGES ON * . * TO '$MYSQL_USER'@'%';
+FLUSH PRIVILEGES;
 USE $MYSQL_DATABASE;
 CREATE TABLE IF NOT EXISTS $MYSQL_DATABASE.members(
 		member_id int auto_increment,
@@ -12,5 +12,4 @@ CREATE TABLE IF NOT EXISTS $MYSQL_DATABASE.members(
 		primary key(member_id)
 	);
 EOF
-pkill mysqld
-mysqld_safe --datadir='/var/lib/mysql'
+mysqld_safe --datadir='/var/lib/mysql' --init-file=/db.sql
