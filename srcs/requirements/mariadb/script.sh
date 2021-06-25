@@ -12,4 +12,4 @@ CREATE TABLE IF NOT EXISTS $MYSQL_DATABASE.members(
 		primary key(member_id)
 	);
 EOF
-mysqld_safe --datadir='/var/lib/mysql' --init-file=/db.sql
+exec mysqld_safe --datadir='/var/lib/mysql' --init-file=/db.sql
