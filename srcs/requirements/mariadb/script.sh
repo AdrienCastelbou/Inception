@@ -1,5 +1,5 @@
 mysql_install_db
-service mysql start
+mysqld &
 mysql -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE"
 mysql -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'$WORDPRESS_DB_HOST' IDENTIFIED BY '$MYSQL_USER';"
 mysql -e "GRANT ALL PRIVILEGES ON * . * TO '$MYSQL_USER'@'$WORDPRESS_DB_HOST';"
@@ -14,4 +14,5 @@ CREATE TABLE IF NOT EXISTS $MYSQL_DATABASE.members(
 	INSERT INTO members (name) VALUES ('Thomas (Neo)');
 	INSERT INTO members (name) VALUES ('BIGGIE');
 EOF
+pkill mysqld
 mysqld_safe --datadir='/var/lib/mysql'
