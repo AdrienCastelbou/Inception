@@ -8,7 +8,7 @@ services:
         build: requirements/wordpress/.
         image: wordpress
         volumes:
-            - /home/user42/data/front/.:/var/www/html/
+            - shared_front:/var/www/html/
         restart: always
         expose:
             - 9000
@@ -38,13 +38,20 @@ services:
             - wordpress
         image: nginx
         volumes:
-            - /home/user42/data/front/.:/usr/var/www/html
+            - shared_front:/var/www/html
         ports:
             - 443:443
         networks:
             - inception
         container_name: nginx
 
+volumes:
+    shared_front:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: bind
+            device: '/home/user42/data/front'
 networks:
     inception:
         driver: bridge
