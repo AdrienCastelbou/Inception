@@ -12,6 +12,6 @@ COPY conf/acastelb.42.fr.cer /ssl
 
 COPY conf/acastelb.42.fr.key /ssl
 
-COPY nginx.conf /etc/nginx/.
+COPY conf/nginx.conf /etc/nginx/.
 
 CMD ["nginx", "-g", "daemon off;"]
