@@ -8,7 +8,7 @@ services:
         build: requirements/wordpress/.
         image: wordpress:v1.0
         volumes:
-            - shared_front:/var/www/html/
+            - /home/acastelb/data/front:/var/www/html/
         restart: always
         expose:
             - 9000
@@ -22,7 +22,7 @@ services:
         build: requirements/mariadb/.
         image: mariadb:v1.0
         volumes:
-            - /home/user42/data/db/.:/var/lib/mysql
+            - /home/acastelb/data/db/.:/var/lib/mysql
         expose:
             - 3306
         restart: always
@@ -38,7 +38,7 @@ services:
             - wordpress
         image: nginx:v1.0
         volumes:
-            - shared_front:/var/www/html
+            - /home/acastelb/data/front:/var/www/html
         ports:
             - 443:443
         restart: always
@@ -46,13 +46,6 @@ services:
             - inception
         container_name: nginx
 
-volumes:
-    shared_front:
-        driver: local
-        driver_opts:
-            type: 'none'
-            o: bind
-            device: '/home/user42/data/front'
 networks:
     inception:
         driver: bridge
