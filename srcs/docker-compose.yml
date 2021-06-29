@@ -41,6 +41,7 @@ services:
             - shared_front:/var/www/html
         ports:
             - 443:443
+        restart: always
         networks:
             - inception
         container_name: nginx
