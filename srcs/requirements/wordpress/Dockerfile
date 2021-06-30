@@ -6,6 +6,9 @@ RUN apt install -y php7.3 php7.3-fpm php7.3-mysql php-common php7.3-cli php7.3-c
 RUN mkdir -p /var/www/html
 RUN apt install wget -y
 RUN wget https://fr.wordpress.org/latest-fr_FR.tar.gz
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
 RUN tar -zxvf latest-fr_FR.tar.gz
 RUN rm -f latest-fr_FR.tar.gz
 COPY tools/entrypoint.sh entrypoint.sh
